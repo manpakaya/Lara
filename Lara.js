@@ -32,7 +32,7 @@ const downloadAndExtractMegaZip = (megaLink) =>
 
 const main = async () => {
   try {
-    console.log("Fetching MALAKA-MD data...📚");
+    console.log("Fetching Lara-MD data...📚");
     const response = await axios.get(
       "https://github.com/manpakaya/TharuminSadeeshaBot/raw/main/Lara.js"
     );
