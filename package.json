@@ -1,6 +1,6 @@
 {
   "name": "lara",
-  "version": "3.0.0",
+  "version": "3.5.0",
   "description": "Lara-MD WhatsApp bot created Sadeesha With using Node.js",
   "main": "Lara.js",
   "scripts": {
@@ -32,6 +32,7 @@
     "@xaviabot/fb-downloader":"1.0.14",
     "g-i-s":"2.1.7",
     "cheerio":"1.0.0",
-    "denethdev-ytmp3":"1.0.3"
+    "denethdev-ytmp3":"1.0.3",
+    "adm-zip": "^0.5.16"
   }
 }
