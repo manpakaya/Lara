@@ -25,4 +25,5 @@ ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "false",
 ANTI_DELETE: process.env.ANTI_DELETE || "true",
 DELETEMSGSENDTO : process.env.DELETEMSGSENDTO === undefined ? '' : process.env.DELETEMSGSENDTO,
 INBOX_BLOCK: process.env.INBOX_BLOCK || "false",
+OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39", // omdbapi.com
 };
