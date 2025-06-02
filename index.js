@@ -171,33 +171,12 @@ mek.message = (getContentType(mek.message) === 'ephemeralMessage') ? mek.message
 if (mek.key && mek.key.remoteJid === 'status@broadcast' && config.AUTO_READ_STATUS === "true"){
 await conn.readMessages([mek.key])
 if (mek.key && mek.key.remoteJid === 'status@broadcast' && config.AUTO_STATUS_REPLY === "true"){
-  const user = mek.key.participant;
-  const randomText = [
-  "*ඔන්න මම ඉස්සෙල්ලම බැලුවා 😊*",
-  "*ඒක ගොඩක් ලස්සනයි 🙃*",
-  "*ගොඩක් ලස්සනයි 😘*",
-  "*සෝයි අනේ ඒක 🤗*",
-  "*මම කරදරයක්ද දන්නේ නෑ ඔයාට 🙁😓*"
-  ];
-  const randomReply = randomText[Math.floor(Math.random() * randomText.length)];
-  await conn.sendMessage(user, { text: randomReply,
-  contextInfo: {
-                mentionedJid: ['94779062397@s.whatsapp.net'], // specify mentioned JID(s) if any
-                groupMentions: [],
-                forwardingScore: 1,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363192254044294@newsletter',
-                    newsletterName: "Lααɾα-ᴍᴅ ✻",
-                    serverMessageId: 999
-                }              
-            }
-  }, { quoted: mek });
+  const user = mek.key.participant
+  const text = `${config.STATUS_REPLY_MSG}`
+  await conn.sendMessage(user, { text: text, react: { text: '💜', key: mek.key } }, { quoted: mek })
             }  
     const mnyako = await jidNormalizedUser(conn.user.id)
-    const randomEmoji = ["❤","💛","💚","💙","💜","🖤","💝","💕","💞","💓","💗","💖","💘","❣️"];
-    const randomReact = randomEmoji[Math.floor(Math.random() * randomEmoji.length)];
-await conn.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: randomReact}}, { statusJidList: [mek.key.participant, mnyako] })
+await conn.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: '🌸'}}, { statusJidList: [mek.key.participant, mnyako] })
 }	      
 	    if (mek.key && mek.key.remoteJid === 'status@broadcast') return
             const m = sms(conn, mek)
@@ -232,7 +211,29 @@ await conn.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: randomR
     const reply = (teks) => {
     conn.sendMessage(from, { text: teks }, { quoted: mek })
     }
-//Status Save
+    
+    conn.sendFileUrl = async (jid, url, caption, quoted, options = {}) => {
+                  let mime = '';
+                  let res = await axios.head(url)
+                  mime = res.headers['content-type']
+                  if (mime.split("/")[1] === "gif") {
+                    return conn.sendMessage(jid, { video: await getBuffer(url), caption: caption, gifPlayback: true, ...options }, { quoted: quoted, ...options })
+                  }
+                  let type = mime.split("/")[0] + "Message"
+                  if (mime === "application/pdf") {
+                    return conn.sendMessage(jid, { document: await getBuffer(url), mimetype: 'application/pdf', caption: caption, ...options }, { quoted: quoted, ...options })
+                  }
+                  if (mime.split("/")[0] === "image") {
+                    return conn.sendMessage(jid, { image: await getBuffer(url), caption: caption, ...options }, { quoted: quoted, ...options })
+                  }
+                  if (mime.split("/")[0] === "video") {
+                    return conn.sendMessage(jid, { video: await getBuffer(url), caption: caption, mimetype: 'video/mp4', ...options }, { quoted: quoted, ...options })
+                  }
+                  if (mime.split("/")[0] === "audio") {
+                    return conn.sendMessage(jid, { audio: await getBuffer(url), caption: caption, mimetype: 'audio/mpeg', ...options }, { quoted: quoted, ...options })
+                  }
+                }
+//Status save
  if(body === "send" || body === "Send" || body === "Save" || body === "Ewpm" || body === "ewpn" || body === "Dapan" || body === "dapan" || body === "oni" || body === "Oni" || body === "save" || body === "Save" || body === "ewanna" || body === "Ewanna" || body === "ewam" || body === "Ewam" || body === "sv" || body === "Sv"|| body === "දාන්න"|| body === "එවම්න"){
     // if(!m.quoted) return reply("*Please Mention status*")
     const data = JSON.stringify(mek.message, null, 2);
@@ -273,7 +274,6 @@ await conn.sendMessage(mek.key.remoteJid, { react: { key: mek.key, text: randomR
         await conn.sendMessage(from, buttonMessage,{quoted: mek});
     }
 }
-//Inbox Block
 if (config.INBOX_BLOCK === "true" && mek.key.remoteJid.endsWith('@s.whatsapp.net')) {
     if (!mek.key.fromMe) { // Ensure the bot doesn't block itself
         console.log(`Auto-block initiated for ${mek.key.remoteJid}...`);
