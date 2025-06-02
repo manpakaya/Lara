@@ -107,12 +107,12 @@ cmd({
         const apiUrl = `https://apis.davidcyriltech.my.id/youtube/mp3?url=${encodeURIComponent(url)}`;
         
         const res = await fetch(apiUrl);
-        const data = await res.json();
-
-        if (!data?.result?.downloadUrl) return reply("Download failed. Try again later.");
+        const sadiya = await res.json();
+        
+        if (!sadiya?.result?.downloadUrl) return reply("Download failed. Try again later.");
 
     await conn.sendMessage(from, {
-    audio: { url: data.result.downloadUrl },
+    audio: { url: sadiya.result.downloadUrl },
     mimetype: "audio/mpeg",
     fileName: `${song.title}.mp3`,
     contextInfo: {
