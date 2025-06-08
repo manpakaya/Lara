@@ -173,8 +173,8 @@ const sentMsg = await conn.sendMessage(from, {
                 await conn.sendMessage(from, { react: { text: '⬆️', key: mek.key } });  
                     await conn.sendMessage(from, {
                         document: { url: data.result.download },
-                        mimetype: "audio/mp3",
-                        fileName: `${data.result.title}.mp3`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
+                        mimetype: "video/mp4",
+                        fileName: `${data.result.title}.mp4`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
                         caption: "*© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴇᴇꜱʜᴀ ᴄᴏᴅᴇʀ · · ·*\n> *360P*",
                         contextInfo: {
                             externalAdReply: {
@@ -205,8 +205,8 @@ const sentMsg = await conn.sendMessage(from, {
                 await conn.sendMessage(from, { react: { text: '⬆️', key: mek.key } });
                     await conn.sendMessage(from, {
                         document: { url: data.result.download },
-                        mimetype: "audio/mp3",
-                        fileName: `${data.result.title}.mp3`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
+                        mimetype: "video/mp4",
+                        fileName: `${data.result.title}.mp4`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
                         caption: "*© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴇᴇꜱʜᴀ ᴄᴏᴅᴇʀ · · ·*\n> *480P*",
                         contextInfo: {
                             externalAdReply: {
@@ -235,8 +235,8 @@ const sentMsg = await conn.sendMessage(from, {
                 await conn.sendMessage(from, { react: { text: '⬆️', key: mek.key } });  
                     await conn.sendMessage(from, {
                         document: { url: data.result.download },
-                        mimetype: "audio/mp3",
-                        fileName: `${data.result.title}.mp3`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
+                        mimetype: "video/mp4",
+                        fileName: `${data.result.title}.mp4`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
                         caption: "*© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴇᴇꜱʜᴀ ᴄᴏᴅᴇʀ · · ·*\n> *720P*",
                         contextInfo: {
                             externalAdReply: {
@@ -265,8 +265,8 @@ const sentMsg = await conn.sendMessage(from, {
                 await conn.sendMessage(from, { react: { text: '⬆️', key: mek.key } });  
                     await conn.sendMessage(from, {
                         document: { url: data.result.download },
-                        mimetype: "audio/mp3",
-                        fileName: `${data.result.title}.mp3`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
+                        mimetype: "video/mp4",
+                        fileName: `${data.result.title}.mp4`, // Ensure `img.allmenu` is a valid image URL or base64 encoded image
                         caption: "*© ᴄʀᴇᴀᴛᴇᴅ ʙʏ ꜱᴀᴅᴇᴇꜱʜᴀ ᴄᴏᴅᴇʀ · · ·*\n> *1080P*",
                         contextInfo: {
                             externalAdReply: {
