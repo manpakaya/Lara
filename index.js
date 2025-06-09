@@ -151,23 +151,6 @@ conn.groupAcceptInvite('Ci5mDk9zEVF95NcuqEtzl4')
 console.log("Successful join our support 🧑‍💻")
     }
     })
-//group meta data catch
-const groupCache = new NodeCache({stdTTL: 5 * 60, useClones: false})
-
-const sock = makeWASocket({
-    cachedGroupMetadata: async (jid) => groupCache.get(jid)
-})
-
-sock.ev.on('groups.update', async ([event]) => {
-    const metadata = await sock.groupMetadata(event.id)
-    groupCache.set(event.id, metadata)
-})
-
-sock.ev.on('group-participants.update', async (event) => {
-    const metadata = await sock.groupMetadata(event.id)
-    groupCache.set(event.id, metadata)
-})
-//_
 conn.ev.on('creds.update', saveCreds)  
         
 conn.ev.on('messages.upsert', async(mek) => {
