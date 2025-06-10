@@ -14,11 +14,6 @@ cmd({
     const botJid = client.user?.id || (client.user.id.split(":")[0] + "@s.whatsapp.net");
     
     // Allow both bot owner and bot itself to use the command
-    if (message.sender !== botJid && !isCreator) {
-      return await client.sendMessage(from, {
-        text: "*📛 This command can only be used by the bot or its owner.*"
-      }, { quoted: message });
-    }
 
     if (!message.quoted || !message.quoted.mtype || !message.quoted.mtype.includes("image")) {
       return await client.sendMessage(from, {
